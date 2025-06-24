@@ -171,7 +171,9 @@ async function resetDuel() {
 
     await hiddenCardDetails();
 
-    init();
+    showHiddenCardFieldsImages(false);
+    drawCards(5, state.playerSides.player1);
+    drawCards(5, state.playerSides.computer);
 }
 
 async function playAudio(status) {
@@ -182,8 +184,9 @@ async function playAudio(status) {
     } catch { }
 }
 
-function init() {
-    showHiddenCardFieldsImages(false);
+function gameStart() {
+    document.getElementById("start-duel").style.display = "none";
+    document.querySelector(".card-versus-container").style.display = "flex";
 
     drawCards(5, state.playerSides.player1);
     drawCards(5, state.playerSides.computer);
@@ -192,5 +195,3 @@ function init() {
     bgm.volume = 0.3;
     bgm.play();
 }
-
-init();
